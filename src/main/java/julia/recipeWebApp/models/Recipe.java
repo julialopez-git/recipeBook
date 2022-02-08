@@ -1,6 +1,8 @@
 package julia.recipeWebApp.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -20,11 +22,17 @@ public class Recipe {
     /*todo add
     private Difficulty difficulty;
      */
+
     @Lob
     private Byte[] image;
     /*cascade here defines recipe as owner. If we do something with recipe it affects Notes*/
+
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    /*mappedBy = name of the property in child class in which this class is stored (in each ingredient)*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     public Notes getNotes() {
         return notes;
