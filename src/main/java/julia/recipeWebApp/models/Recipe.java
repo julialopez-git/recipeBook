@@ -19,10 +19,9 @@ public class Recipe {
     private String url;
     @Lob
     private String directions;
-    /*todo add
+    /*The default EnumType is ORDINAL*/
+    @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
-     */
-
     @Lob
     private Byte[] image;
     /*cascade here defines recipe as owner. If we do something with recipe it affects Notes*/
@@ -108,11 +107,27 @@ public class Recipe {
         this.directions = directions;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public Byte[] getImage() {
         return image;
     }
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
