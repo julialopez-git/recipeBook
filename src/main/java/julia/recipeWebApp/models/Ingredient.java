@@ -13,7 +13,8 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    //private UnitOfMeasure unitOfMeasure;
+    @ManyToOne
+    private UnitOfMeasure unitOfMeasure;
 
     @ManyToOne
     private Recipe recipe;
