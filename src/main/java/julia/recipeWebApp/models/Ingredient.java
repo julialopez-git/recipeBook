@@ -1,7 +1,6 @@
 package julia.recipeWebApp.models;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 public class Ingredient {
@@ -11,13 +10,20 @@ public class Ingredient {
     private Long id;
 
     private String description;
-    private BigDecimal amount;
+    private double amount;
 
     @ManyToOne
     private UnitOfMeasure unitOfMeasure;
 
     @ManyToOne
     private Recipe recipe;
+
+    public Ingredient(String description, double amount, UnitOfMeasure unitOfMeasure, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.unitOfMeasure = unitOfMeasure;
+        this.recipe = recipe;
+    }
 
     public Long getId() {
         return id;
@@ -35,11 +41,11 @@ public class Ingredient {
         this.description = description;
     }
 
-    public BigDecimal getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
