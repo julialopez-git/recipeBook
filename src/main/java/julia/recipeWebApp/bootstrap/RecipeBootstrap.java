@@ -99,21 +99,20 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Notes nachosNotes = new Notes();
         nachosNotes.setRecipeNotes("No notes");
-        nachosNotes.setRecipe(nachos);
         nachos.setNotes(nachosNotes);
 
         nachos.setServings(6);
         nachos.setSource("Simply Recipes");
         nachos.setUrl("https://www.simplyrecipes.com/recipes/nachos/");
 
-        nachos.getIngredients().add(new Ingredient("Ground beef", 1.0, pound, nachos));
-        nachos.getIngredients().add(new Ingredient("Vegetable oil", 1.0, teaspoon, nachos));
-        nachos.getIngredients().add(new Ingredient("Refried beans", 2.0, cup, nachos));
-        nachos.getIngredients().add(new Ingredient("Water", 0.25, cup, nachos));
-        nachos.getIngredients().add(new Ingredient("Cheddar cheese", 4.0, ounce, nachos));
-        nachos.getIngredients().add(new Ingredient("Pico de gallo", 1.0, cup, nachos));
-        nachos.getIngredients().add(new Ingredient("Jalapeño", 1.0, null, nachos));
-        nachos.getIngredients().add(new Ingredient("Pepper", 1.0, pinch, nachos));
+        nachos.addIngredient(new Ingredient("Ground beef", 1.0, pound));
+        nachos.addIngredient(new Ingredient("Vegetable oil", 1.0, teaspoon));
+        nachos.addIngredient(new Ingredient("Refried beans", 2.0, cup));
+        nachos.addIngredient(new Ingredient("Water", 0.25, cup));
+        nachos.addIngredient(new Ingredient("Cheddar cheese", 4.0, ounce));
+        nachos.addIngredient(new Ingredient("Pico de gallo", 1.0, cup));
+        nachos.addIngredient(new Ingredient("Jalapeño", 1.0, null));
+        nachos.addIngredient(new Ingredient("Pepper", 1.0, pinch));
 
         recipes.add(nachos);
         return recipes;
