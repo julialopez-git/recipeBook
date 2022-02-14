@@ -1,9 +1,13 @@
 package julia.recipeWebApp.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter @Setter
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,28 +16,4 @@ public class Category {
     /*mappedBy = name of the property in the other class.*/
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
-    }
 }

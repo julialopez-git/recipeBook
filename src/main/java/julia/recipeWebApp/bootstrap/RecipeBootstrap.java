@@ -4,6 +4,7 @@ import julia.recipeWebApp.models.*;
 import julia.recipeWebApp.repositories.CategoryRepository;
 import julia.recipeWebApp.repositories.RecipeRepository;
 import julia.recipeWebApp.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
@@ -71,6 +73,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         UnitOfMeasure pound = optPound.get();
         UnitOfMeasure bag = optBag.get();
 
+        log.debug("Optionals gotten");
+
         /*-------------------------------- get Categories ------------------------------------- */
         Optional<Category> optMexican = categoryRepository.findByDescription("Mexican");
         if(!optMexican.isPresent()){
@@ -114,7 +118,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         nachos.addIngredient(new Ingredient("Jalapeño", 1.0, null));
         nachos.addIngredient(new Ingredient("Pepper", 1.0, pinch));
 
+        log.debug("Ingredients logged");
+
         recipes.add(nachos);
         return recipes;
     }
 }
+
+
